@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
-const shoppingListSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    max: 50,
-    required: true,
+const shoppingListSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      maxLength: 50,
+    },
   },
-  createdAt: { type: Date },
-  updatedAt: { type: Date },
-});
+  { timestamps: true }
+);
 
 module.exports = mongoose.model("ShoppingList", shoppingListSchema);
