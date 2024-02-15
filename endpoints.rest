@@ -1,32 +1,54 @@
-### Get all shopping lists
+### GET all shopping lists
 GET http://localhost:3000/shoppinglists
 
-### Add shopping list 
+### GET shopping list by shoppingListId
+GET http://localhost:3000/shoppinglists/65ce76e26007b64f6b2ee1d4
+
+### GET response "Shop not found" test get one store with an object id not in the db (right length), just doesn't exist) 
+GET http://localhost:3000/shoppinglists/65cc037b0fbb27a613945500
+
+### GET response "Bad request" test get one store with an invalid object id (not the right length) 
+GET http://localhost:3000/shoppinglists/65cc
+
+### POST shopping list 
 POST http://localhost:3000/shoppinglists
 Content-Type: application/json
 
 {
-"name": "Harris Teeter"
+"storeName": "Walmart"
 }
 
-### Get shopping list by id
-GET http://localhost:3000/shoppinglists/65c2e33f8ada7625db7fba22
-
-### test get one bookmark with an object id not in the db (right length), just doesn't exist) 
-GET http://localhost:3000/shoppinglists/65b30f8ace943ee2ba7e38b5
-
-### test get one bookmark with an invalid object id (not the right length) 
-GET http://localhost:3000/shoppinglists/blurb
-
-### TODO: update one bookmark 
-PATCH http://localhost:3000/shoppinglists/65c2f6d1d7b8ca7c3ac94ade
+### POST item 
+POST http://localhost:3000/shoppinglists/65ce7febc7763a356d1a7066/items
 Content-Type: application/json
 
 {
-"name": "Harris Teeter 2"
+"itemName": "icecream",
+"quantity": "2",
+"purchased": false
 }
 
-### TODO: delete one bookmark 
-DELETE http://localhost:3000/shoppinglists/65c2e3b28ada7625db7fba27
+### PATCH one shopping list 
+PATCH http://localhost:3000/shoppinglists/65ce7febc7763a356d1a7066
+Content-Type: application/json
+
+{
+"storeName": "Grocery Store 3"
+}
+
+### PATCH one item 
+PATCH http://localhost:3000/shoppinglists/65ce7febc7763a356d1a7066/items/65ce8216f1d7bcef85809ac8
+Content-Type: application/json
+
+{
+"itemName": "Kondike bar",
+"quantity": "20"
+}
+
+### DELETE one store  
+DELETE http://localhost:3000/shoppinglists/65ce775d6007b64f6b2ee1eb
+
+### DELETE one item  
+DELETE http://localhost:3000/shoppinglists/65ce76e26007b64f6b2ee1d4/items/65ce79866226e24416488312
 
 ### TODO: get one bookmark by title GET http://localhost:3000/shoppinglists/google
